@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DFFB4195-0602-4875-ABD4-26887B0A7954}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>NavMeshTester</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Lib\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Lib\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib\Include\;$(ProjectDir)Include\;</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>MathLib_d.lib;bootstrap_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib\Include\;$(ProjectDir)Include\;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>MathLib.lib;bootstrap.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Behaviours\Decorator\Inverter.cpp" />
+    <ClCompile Include="Source\Behaviours\Decorator\ReturnIf.cpp" />
+    <ClCompile Include="Source\Behaviours\Decorator\Successor.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Follow.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Maze\Agents\MazeAgentFactory.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\AtExit.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\CameraFollow.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\FollowPath.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\FreshPath.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\GetClosest.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\InShortRange.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\MazeAvoider.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\MazeGuider.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\SeekClosest.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\Successor.cpp" />
+    <ClCompile Include="Source\Maze\Behaviours\Timer.cpp" />
+    <ClCompile Include="Source\Maze\MazeEditor.cpp" />
+    <ClCompile Include="Source\AI\Behaviours\Keyboard.cpp" />
+    <ClCompile Include="Source\Behaviours\Tree\BehaviourTree.cpp" />
+    <ClCompile Include="Source\Behaviours\Interface\IBehaviour.cpp" />
+    <ClCompile Include="Source\Behaviours\Interface\IComposite.cpp" />
+    <ClCompile Include="Source\Behaviours\Interface\IDecorator.cpp" />
+    <ClCompile Include="Source\Behaviours\Composite\Selector.cpp" />
+    <ClCompile Include="Source\Behaviours\Composite\Sequence.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Arrival.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Evade.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Flee.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Flocking\Alignment.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Flocking\Cohesion.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Flocking\IFlock.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Flocking\Separation.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Steerer.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\ISteer.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Pursue.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Seek.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Trail.cpp" />
+    <ClCompile Include="Source\Behaviours\Steering\Wander.cpp" />
+    <ClCompile Include="Source\Blackboards\Blackboard.cpp" />
+    <ClCompile Include="Source\Editors\NavMeshEditor.cpp" />
+    <ClCompile Include="Source\Enemy.cpp" />
+    <ClCompile Include="Source\Maze\Maze.cpp" />
+    <ClCompile Include="Source\Maze\MazeGame.cpp" />
+    <ClCompile Include="Source\Maze\MazeNode.cpp" />
+    <ClCompile Include="Source\Maze\Agents\MazeAgent.cpp" />
+    <ClCompile Include="Source\NavMeshTesterApp.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\NavMesh\NavMesh2D.cpp" />
+    <ClCompile Include="Source\NavMesh\NavMeshComponents.cpp" />
+    <ClCompile Include="Source\NavMesh\NavMeshHeuristics.cpp" />
+    <ClCompile Include="Source\NavMesh\NavMeshUtility.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\poli2try\common\shapes.cc" />
+    <ClCompile Include="Source\poli2try\sweep\advancing_front.cc" />
+    <ClCompile Include="Source\poli2try\sweep\cdt.cc" />
+    <ClCompile Include="Source\poli2try\sweep\sweep.cc" />
+    <ClCompile Include="Source\poli2try\sweep\sweep_context.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\AI\Behaviours\Keyboard.h" />
+    <ClInclude Include="Include\Behaviours\Decorator\Inverter.h" />
+    <ClInclude Include="Include\Behaviours\Decorator\ReturnIf.h" />
+    <ClInclude Include="Include\Behaviours\Decorator\Successor.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Follow.h" />
+    <ClInclude Include="Include\Camera.h" />
+    <ClInclude Include="Include\Maze\Agents\MazeAgentFactory.h" />
+    <ClInclude Include="Include\Maze\Behaviours\AtExit.h" />
+    <ClInclude Include="Include\Maze\Behaviours\CameraFollow.h" />
+    <ClInclude Include="Include\Maze\Behaviours\FollowPath.h" />
+    <ClInclude Include="Include\Maze\Behaviours\FreshPath.h" />
+    <ClInclude Include="Include\Maze\Behaviours\GetClosest.h" />
+    <ClInclude Include="Include\Maze\Behaviours\InShortRange.h" />
+    <ClInclude Include="Include\Maze\Behaviours\MazeAvoider.h" />
+    <ClInclude Include="Include\Maze\Behaviours\MazeGuider.h" />
+    <ClInclude Include="Include\Maze\Behaviours\SeekClosest.h" />
+    <ClInclude Include="Include\Maze\Behaviours\Successor.h" />
+    <ClInclude Include="Include\Maze\Behaviours\Timer.h" />
+    <ClInclude Include="Include\Maze\Maze.h" />
+    <ClInclude Include="Include\Maze\MazeEditor.h" />
+    <ClInclude Include="Include\Maze\MazeGame.h" />
+    <ClInclude Include="Include\Maze\MazeInfo.h" />
+    <ClInclude Include="Include\Maze\MazeNode.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Following\IFollow.h" />
+    <ClInclude Include="Include\Boid.h" />
+    <ClInclude Include="Include\Containers\Graph.h" />
+    <ClInclude Include="Include\Containers\Grid.h" />
+    <ClInclude Include="Include\Editors\NavMeshEditor.h" />
+    <ClInclude Include="Include\Enemy.h" />
+    <ClInclude Include="Include\AI\Containers\AgentPool.h" />
+    <ClInclude Include="Include\Behaviours\BehaviourInfo.h" />
+    <ClInclude Include="Include\Maze\Agents\MazeAgent.h" />
+    <ClInclude Include="Include\Maze\MazeSurvivour.h" />
+    <ClInclude Include="Include\Behaviours\Tree\BehaviourTree.h" />
+    <ClInclude Include="Include\Behaviours\Interface\IBehaviour.h" />
+    <ClInclude Include="Include\Behaviours\Interface\IComposite.h" />
+    <ClInclude Include="Include\Behaviours\Interface\IDecorator.h" />
+    <ClInclude Include="Include\Behaviours\Composite\Selector.h" />
+    <ClInclude Include="Include\Behaviours\Composite\Sequence.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Arrival.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Evade.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flee.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flocking\Alignment.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flocking\Cohesion.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flocking\IFlock.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flocking\Queue.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Flocking\Separation.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Trail.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Steerer.h" />
+    <ClInclude Include="Include\Behaviours\Steering\ISteer.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Pursue.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Seek.h" />
+    <ClInclude Include="Include\Behaviours\Steering\Wander.h" />
+    <ClInclude Include="Include\Blackboards\Blackboard.h" />
+    <ClInclude Include="Include\Blackboards\BlackboardInfo.h" />
+    <ClInclude Include="Include\Components\RigidBody2D.h" />
+    <ClInclude Include="Include\Components\Transform2D.h" />
+    <ClInclude Include="Include\Containers\ObjectPool.h" />
+    <ClInclude Include="Include\NavMesh\NavMesh2D.h" />
+    <ClInclude Include="Include\NavMesh\NavMeshComponents.h" />
+    <ClInclude Include="Include\NavMeshTesterApp.h" />
+    <ClInclude Include="Include\NavMesh\NavMeshHeuristics.h" />
+    <ClInclude Include="Include\NavMesh\NavMeshUtility.h" />
+    <ClInclude Include="Include\Objects\Agent.h" />
+    <ClInclude Include="Include\Objects\GameObject.h" />
+    <ClInclude Include="Include\Player.h" />
+    <ClInclude Include="Include\poly2tri\common\shapes.h" />
+    <ClInclude Include="Include\poly2tri\common\utils.h" />
+    <ClInclude Include="Include\poly2tri\poly2tri.h" />
+    <ClInclude Include="Include\poly2tri\sweep\advancing_front.h" />
+    <ClInclude Include="Include\poly2tri\sweep\cdt.h" />
+    <ClInclude Include="Include\poly2tri\sweep\sweep.h" />
+    <ClInclude Include="Include\poly2tri\sweep\sweep_context.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Include\Behaviours\README.txt" />
+    <Text Include="Include\Components\README.txt" />
+    <Text Include="Include\Maze\Behaviours\README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
